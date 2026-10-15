@@ -4,7 +4,7 @@ let wallsByHall = {};
 
 async function init() {
     try {
-        const response = await fetch("./database/climbingwalls.json");
+        const response = await fetch("../database/climbingwalls.json");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         wallsByHall = await response.json();
 
