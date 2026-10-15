@@ -1,0 +1,41 @@
+{
+    "Zuidhaven" : {
+        "allwalls":[
+            "Slippery Slope",
+            "Cave",
+            "Big Wall",
+            "Whale",
+            "Top Out",
+            "TiKa Island",
+            "Overhang",
+            "The Hook"
+        ]
+    },
+    "National Climbing Centre":{
+        "allwalls":[
+            "40\u00B0",
+            "0",
+            "10\u00B0",
+            "20\u00B0",
+            "30\u00B0",
+            "Big Pillar",
+            "Small Pillar",
+            "Curve",
+            "Slab",
+            "Steep",
+            "Ar\u00EAte",
+            "Straight",
+            "Pillar",
+            "Mini",
+            "Wave",
+            "Main",
+            "Intro Big",
+            "Intro Small",
+            "Skyline",
+            "Cave",
+            "Big Block",
+            "Slab Lab",
+            "SOTW"
+        ]
+    }
+}
