@@ -4,7 +4,7 @@ include_once('../database/connection.php');
 session_start();
 
 if (!isset($_SESSION['loggedInUser']) || $_SESSION['loggedInUser'] == false) {
-    header('Location: index.php');
+    header('Location: index.html');
     exit;
 }
 
@@ -28,12 +28,33 @@ if (isset($_POST['submitted'])) {
 
 ?>
 
+<style>
+    .flash p {
+        margin-bottom: 0px;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add climbs</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+
 <script src="../scripts/add_climbs_handler.js" defer></script>
 
-<body>
+<body class="bg-dark text-light">
+    <div class="container text-center position-absolute top-50 start-50 translate-middle">
     <a href="statistics.php">Go back</a>
     <form method="POST">
-        <div>
+        <div class="py-2">
             <label for="grade">The grade of the climb:</label>
             <select id="grade" name="grade">
                 <option value="2+">2+</option>
@@ -69,20 +90,20 @@ if (isset($_POST['submitted'])) {
                 <option value="8c+">8c+</option>
             </select> 
         </div>
-        <div>
+        <div class="py-2">
             <label for="climbinghall">Where did you climb:</label>
             <select name="climbinghall" id="climbinghall" onchange="climbing_wall_handler(this.value)">
                 <option value="Zuidhaven" selected>Zuidhaven</option>
                 <option value="National Climbing Centre">National Climbing Centre</option>
             </select>
         </div>
-        <div>
+        <div class="py-2">
             <label for="climbingwall">At what wall:</label>
             <select name="climbingwall" id="climbingwall">
 
             </select>
         </div>
-        <div>
+        <div class="py-2">
             <label for="color">The color of the climb:</label>
             <select name="color" id="color">
                 <option value="blue">blue</option>
@@ -97,7 +118,7 @@ if (isset($_POST['submitted'])) {
                 <option value="pink">pink</option>
             </select>
         </div>
-        <div>
+        <div class="py-2 flash">
             <p>Flashed:</p>
             <input type="radio" name="flashattempt" id="flash" value="yes" checked>
             <label for="flash">Flash</label>
@@ -107,4 +128,6 @@ if (isset($_POST['submitted'])) {
         <input type="hidden" name="submitted" value="submitted">
         <input type="submit" value="Submit Climb">
     </form>
+    </div>
 </body>
+</html>

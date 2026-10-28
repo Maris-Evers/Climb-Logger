@@ -4,7 +4,7 @@ include_once('../database/connection.php');
 session_start();
 
 if (!isset($_SESSION['loggedInUser']) || $_SESSION['loggedInUser'] == false) {
-    header('Location: index.php');
+    header('Location: index.html');
     exit;
 }
 
@@ -20,7 +20,19 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$user]);
 $allclimbs = $stmt->fetchall();
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
 <script type='text/javascript'>
     <?php
     $php_array = $allclimbs;
@@ -59,20 +71,54 @@ $allclimbs = $stmt->fetchall();
         top: 5px;
         right: 5px;
     }
+
+    th {
+        background-color: rgb(144, 4, 169);
+        padding: 10px;
+        border: solid 1px rgb(248, 208, 255);
+    }
+    td {
+        border: solid 1px rgb(248, 208, 255);
+        padding: 5px;
+    }
+
+    .border-none {
+  border-collapse: collapse;
+  border: none;
+}
+
+.border-none tr:first-child th {
+  border-top: none;
+}
+
+.border-none tr:last-child td {
+  border-bottom: none;
+}
+
+.border-none tr td:first-child,
+.border-none tr th:first-child {
+  border-left: none;
+}
+
+.border-none tr td:last-child,
+.border-none tr th:last-child {
+  border-right: none;
+}
 </style>
 
-<body>
+
+<body class="bg-dark text-light">
     <div class="logout">
         <form action="../scripts/logout.php" method="POST">
-            <input type="submit" value="Log out" />
+            <input type="submit" value="Log out" class="my-2 px-4 pb-1 border border-0 rounded me-2" />
         </form>
     </div>
-    <div class="container">
+    <div class="container text-center position-absolute top-50 start-50 translate-middle">
         <div style="width: 500px;">
             <canvas id="myChart"></canvas>
         </div>
         <h1>Your Top ten climbs:</h1>
-        <table>
+        <table class="border-none">
             <tr>
                 <th>
                     Grade
@@ -150,3 +196,4 @@ $allclimbs = $stmt->fetchall();
         });
     </script>
 </body>
+</html>
